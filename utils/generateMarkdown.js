@@ -27,8 +27,7 @@ function renderLicenseSection(license) {
   return `
   ## License
   
-  This project is covered under the ${license} license agreement.
-  `
+  This project is covered under the ${license} license agreement.`
 }
 
 // TODO: Create a function to generate markdown for README
@@ -69,9 +68,9 @@ ${renderLicenseBadge(data.license)}
 
   ## Questions
 
-  Find my GitHub profile at href="https://github.com/${data.github} or email me at ${data.email}.
+  Find my GitHub profile at https://github.com/${data.github} or email me at ${data.email}.
 
 `;
 }
 
-module.exports = {renderLicenseBadge, renderLicenseLink, renderLicenseSection, generateMarkdown};
+module.exports = {generateMarkdown};

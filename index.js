@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {renderLicenseBadge, renderLicenseLink, renderLicenseSection, generateMarkdown} = require('./utils/generateMarkdown.js');
+const {generateMarkdown} = require('./utils/generateMarkdown.js');
 // const { default: test } = require('node:test');
 
 // TODO: Create an array of questions for user input
@@ -101,6 +101,32 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Please enter your GitHub user name',
+        validate: githubInput => {
+            if (githubInput) {
+                return true;
+            } else {
+                console.log('A GitHub user name is required for the Questions section');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email for the Questions section',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            } else {
+                console.log('An email address is required for the Questions section');
+                return false;
+            }
+        }
     }
 
 ];
@@ -111,7 +137,7 @@ function writeToFile(fileName, data) {
         fs.writeFile(`./dist/${fileName}`, data, err => {
             if (err) {
                 reject (err);
-                return
+                return;
             }
             resolve({
                 ok: true,
@@ -123,26 +149,25 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
+    console.log(`
+    ==========================
+    Nickless Readmii Generator
+    ==========================`);
     return inquirer.prompt(questions)
     .then(response => {
         //console.log(data);
         return generateMarkdown(response);
     })
     .then(markdown => {
-        writeToFile('README.md', markdown);
+        return writeToFile('README.md', markdown);
+    })
+    .then(resolve => {
+        console.log(resolve);
+    })
+    .catch(err => {
+        console.log(err);
     });
 }
 
 // Function call to initialize app
 init();
-
-// const testFileName = 'readme.md';
-// const testData = 'info on readme and stuff';
-
-// writeToFile(testFileName, testData)
-// .then(response => {
-//     console.log(response);
-// })
-// .catch(err => {
-//     console.log(err);
-// })
