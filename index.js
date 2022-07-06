@@ -82,6 +82,25 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'addLicense',
+        message: 'Do you want to an a license for your project?',
+        default: true,
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Choose which type of license to include.',
+        choices: ['MIT', 'GNU General Public License v3.0', 'Mozilla Public License 2.0', 'Apache License 2.0', 'Boost Software License 1.0', 'The Unlicense'],
+        when: ({addLicense}) => {
+            if (addLicense) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 ];
@@ -110,7 +129,7 @@ function init() {
         return generateMarkdown(response);
     })
     .then(markdown => {
-        writeToFile('readme.md', markdown);
+        writeToFile('README.md', markdown);
     });
 }
 
