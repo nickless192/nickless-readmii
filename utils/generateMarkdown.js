@@ -5,7 +5,7 @@ function renderLicenseBadge(license) {
     return ``;
   }
   return `
-  ![Badge](https://img.shields.io/badge/license-${license}-green)`;
+  ![Badge](https://img.shields.io/badge/license-${license.replace(/ /g, '_')}-green)`;
 }
 
 // TODO: Create a function that returns the license link
