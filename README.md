@@ -32,6 +32,8 @@
 
   To start the execution of the application, type 'node index' or 'node index.js' and the series of prompts will guide you through the process of data collection. The License section is optional, with the default value set to true to motivate the user to provide for licensing information. If a license is shown, then the License section is created both in the README.md body and in its Table of Content, and a badge is added at the top of the file, right below the project title name.
 
+   ![Nickless Readmii Screenshot](./assets/images/screenshot-NicklessReadmii.png)
+
   A quick demo was recorded and can be found on the link below:
 
   https://drive.google.com/file/d/1yec_coNYoBaRM74J7f0DsGUQ7BTpMSlg/view
